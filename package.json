@@ -1,0 +1,42 @@
+{
+  "name": "lacona-command-communicate",
+  "version": "0.0.1",
+  "description": "Lacona Command for making calls, sending facetimes, starting emails, and messages",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brandonhorst/lacona-command-communicate.git"
+  },
+  "keywords": [
+    "lacona",
+    "command",
+    "communicate",
+    "phone",
+    "text",
+    "facetime",
+    "email"
+  ],
+  "author": "@brandonhorst",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brandonhorst/lacona-command-communicate/issues"
+  },
+  "homepage": "https://github.com/brandonhorst/lacona-command-communicate",
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "rimraf": "^2.4.2"
+  },
+  "dependencies": {
+    "lacona-phrase": "^0.7.0",
+    "lacona-phrase-email": "0.0.1",
+    "lacona-phrase-phonenumber": "0.0.1",
+    "lacona-phrase-string": "^0.1.0"
+  }
+}
