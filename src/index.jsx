@@ -8,7 +8,6 @@ import EmailAddress from 'lacona-phrase-email'
 export function execute (result) {
   let url
 
-  console.log(JSON.stringify(result))
   if (result.email) {
     if (result.email.message) {
       url = `mailto:${encodeURIComponent(result.email.to.join(','))}?subject=${result.email.subject}`
@@ -146,14 +145,8 @@ export class Sentence extends Phrase {
   }
 }
 
-// export default {
-//   sentences: [OpenApp],
-//   translations: [{
-//     langs: ['en', 'default'],
-//     information: {
-//       title: 'Open Application',
-//       description: 'Quickly launch applications on your computer',
-//       examples: ['open Safari', 'open Contacts']
-//     }
-//   }]
-// }
+export default {
+  sentences: [
+    {Sentence, execute}
+  ]
+}
