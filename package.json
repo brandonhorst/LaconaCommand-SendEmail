@@ -4,7 +4,7 @@
   "description": "Lacona Command for making calls, sending facetimes, starting emails, and messages",
   "main": "lib/index.js",
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "babel --stage 0 src --out-dir lib",
     "clean": "rimraf lib",
     "prepublish": "npm run clean && npm run build"
   },
@@ -29,15 +29,15 @@
   "homepage": "https://github.com/brandonhorst/lacona-command-communicate",
   "devDependencies": {
     "babel": "^5.8.21",
-    "chai": "^3.2.0",
-    "mocha": "^2.2.5",
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
     "rimraf": "^2.4.2"
   },
   "dependencies": {
-    "lacona-phrase": "^0.7.0",
-    "lacona-phrase-email": "0.0.1",
-    "lacona-phrase-phonenumber": "0.0.1",
-    "lacona-phrase-string": "^0.1.0",
+    "lacona-phrase": "^0.9.1",
+    "lacona-phrase-email": "^0.3.0",
+    "lacona-phrase-phone-number": "^0.2.1",
+    "lacona-phrase-string": "^0.4.0",
     "lodash": "^3.10.1"
   }
 }
