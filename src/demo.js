@@ -31,32 +31,32 @@ function colorizeContact (obj) {
 }
 
 export default function demoExecute (result) {
-  if (verb === 'email') {
+  if (result.verb === 'email') {
     return _.flatten([
       {text: 'start', category: 'action'},
       {text: ' a new email to '},
-      outputify(to),
-      subject ? [{text: ' with '}, {text: subject, argument: 'subject'}, {text: ' in the subject'}] : []
+      outputify(result.to),
+      result.subject ? [{text: ' with '}, {text: result.subject, argument: 'subject'}, {text: ' in the subject'}] : []
     ])
-  } else if (verb === 'call') {
+  } else if (result.verb === 'call') {
     return _.flatten([
       {text: 'call ', category: 'action'},
-      outputify(to),
+      outputify(result.to),
       {text: ' through your iPhone'}
     ])
-  } else if (verb === 'facetime') {
+  } else if (result.verb === 'facetime') {
     return _.flatten([
       {text: 'call ', category: 'action'},
-      outputify(to),
+      outputify(result.to),
       {text: ' in '},
       {text: 'Facetime', argument: 'application'},
     ])
-  } else if (verb === 'text') {
+  } else if (result.verb === 'text') {
     return _.flatten([
       {text: 'open ', category: 'action'},
       {text: 'Messages', argument: 'application'},
       {text: ' to a conversation with '},
-      outputify(to)
+      outputify(result.to)
     ])
   }
 }
