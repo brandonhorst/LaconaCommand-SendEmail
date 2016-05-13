@@ -1,12 +1,10 @@
 /** @jsx createElement */
 
-import _ from 'lodash'
 import { createElement } from 'elliptical'
-import { String } from 'elliptical-string'
-import { Command } from 'lacona-command'
-import { PhoneNumber } from 'elliptical-phone'
-import { EmailAddress } from 'elliptical-email'
+import { Command, String, PhoneNumber, EmailAddress } from 'lacona-phrases'
 import { openURL } from 'lacona-api'
+
+import _ from 'lodash'
 import demoExecute from './demo'
 
 function mapEmailGroup (option) {
