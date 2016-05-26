@@ -197,4 +197,4 @@ export const Communicate = {
   }
 }
 
-export const extensions = [Communicate]
+export default [Communicate]

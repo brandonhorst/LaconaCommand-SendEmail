@@ -2,13 +2,13 @@
   "name": "lacona-communicate",
   "version": "0.3.0",
   "description": "Lacona Command for making calls, sending facetimes, starting emails, and messages",
-  "main": "lib/index.js",
+  "main": "build/extensions.js",
   "lacona": {
     "extensions": "build/extensions.js"
   },
   "scripts": {
     "test": "mocha --compilers jsx:babel-register --watch-extensions jsx",
-    "build": "mkdir -p build; browserify src/index.jsx -o build/extensions.js -x lacona-phrases -x elliptical -x lacona-api --standalone command --extension=jsx",
+    "build": "mkdir -p build; browserify src/extensions.jsx -o build/extensions.js -x lacona-phrases -x elliptical -x lacona-api --standalone extensions --extension=jsx",
     "clean": "rimraf build",
     "prepublish": "npm run clean && npm run build"
   },
@@ -40,13 +40,9 @@
     "chai": "^3.5.0",
     "mocha": "^2.4.5",
     "rimraf": "^2.5.2",
-    "elliptical": "^1.0.0-rc13",
-    "lacona-api": "0.2.0",
-    "lacona-phrases": "^0.4.0"
-  },
-  "dependencies": {
     "lodash": "^4.12.0"
   },
+  "dependencies": {},
   "babel": {
     "presets": [
       "es2015"
