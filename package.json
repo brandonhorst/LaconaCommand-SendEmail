@@ -1,6 +1,6 @@
 {
   "name": "lacona-communicate",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Lacona Command for making calls, sending facetimes, starting emails, and messages",
   "lacona": {
     "extensions": "build/extensions.js"
