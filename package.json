@@ -1,6 +1,6 @@
 {
   "name": "lacona-communicate",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Lacona Command for making calls, sending facetimes, starting emails, and messages",
   "scripts": {
     "build": "babel src --out-dir lib",
