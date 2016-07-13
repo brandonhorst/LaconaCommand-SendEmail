@@ -114,17 +114,17 @@ export const Communicate = {
             <EmailGroup id='to' />
             <literal text=' an email' ellipsis />
             <literal text=' about ' />
-            <String argument='subject' id='subject' limit={1} />
+            <String label='subject' id='subject' limit={1} />
           </sequence>
           <sequence>
             <list items={['email ', 'send an email to ', 'send email to ', 'shoot an email to ']} id='verb' value='email' limit={1} />
             <EmailGroup id='to' ellipsis />
             <list items={[' about ', ' ']} limit={1} />
-            <String argument='subject' id='subject' limit={1} />
+            <String label='subject' id='subject' limit={1} />
           </sequence>
           <sequence>
             <literal text='email ' id='verb' value='email' />
-            <String argument='subject' id='subject' limit={1} />
+            <String label='subject' id='subject' limit={1} />
             <literal text=' to ' />
             <EmailGroup id='to' />
           </sequence>
@@ -168,7 +168,7 @@ export const Communicate = {
         </choice>
           {/* <sequence>
             <list items={['text ', 'iMessage ']} limit={1} />
-            <String argument='message' id='message' limit={1} />
+            <String label='message' id='message' limit={1} />
             <literal text=' to ' />
             <AllGroup merge={true} />
           </sequence>
@@ -181,7 +181,7 @@ export const Communicate = {
               <literal text=' a text ' />
               <literal text=' an iMessage' />
             </choice>
-            <String argument='message' id='message' limit={1} />
+            <String label='message' id='message' limit={1} />
           </sequence>
           <sequence>
             <list items={['text ', 'iMessage ']} limit={1} />
@@ -190,7 +190,7 @@ export const Communicate = {
               <literal text=' saying ' />
               <literal text=' ' />
             </choice>
-            <String argument='message' id='message' limit={1} />
+            <String label='message' id='message' limit={1} />
           </sequence>*/}
       </choice>
     )
