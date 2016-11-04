@@ -1,0 +1,35 @@
+{
+  "communicateHeader": {
+    "type": "header",
+    "examples": [
+      "email [info@lacona.io](email address)",
+      "email [feature request](subject) to [info@lacona.io](email address)",
+      "call [1234567890](phone number)",
+      "text [+1 (987) 654-3219](phone number)",
+      "facetime [tcook@apple.com](email address)",
+      "facetime audio [102-938-4857](phone number)"
+    ]
+  },
+  "enableEmail": {
+    "type": "boolean",
+    "default": true
+  },
+  "enableCall": {
+    "type": "boolean",
+    "default": true
+  },
+  "enableText": {
+    "type": "boolean",
+    "default": true
+  },
+  "enableFacetime": {
+    "title": "Enable FaceTime",
+    "type": "boolean",
+    "default": true
+  },
+  "enableFacetimeAudio": {
+    "title": "Enable FaceTime Audio",
+    "type": "boolean",
+    "default": true
+  }
+}

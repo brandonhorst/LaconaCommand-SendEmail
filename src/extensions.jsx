@@ -105,67 +105,77 @@ export const Communicate = {
     openURL({url})
   },
 
-  describe () {
+  describe ({config}) {
     return (
       <choice>
-        <choice limit={1}>
-          <sequence>
-            <list items={['send ', 'shoot ']} limit={1} id='verb' value='email' />
-            <EmailGroup id='to' />
-            <literal text=' an email' ellipsis />
-            <literal text=' about ' />
-            <String label='subject' id='subject' limit={1} />
-          </sequence>
-          <sequence>
-            <list items={['email ', 'send an email to ', 'send email to ', 'shoot an email to ']} id='verb' value='email' limit={1} />
-            <EmailGroup id='to' ellipsis />
-            <list items={[' about ', ' ']} limit={1} />
-            <String label='subject' id='subject' limit={1} />
-          </sequence>
-          <sequence>
-            <literal text='email ' id='verb' value='email' />
-            <String label='subject' id='subject' limit={1} />
-            <literal text=' to ' />
-            <EmailGroup id='to' />
-          </sequence>
-        </choice>
-        <choice limit={1}>
-          <sequence>
-            <list items={['call ']} limit={1} id='verb' value='call' />
-            <NumberGroup id='to' max={1} />
-          </sequence>
-          <sequence>
-            <list items={['give ']} limit={1} id='verb' value='call' />
-            <NumberGroup id='to' max={1} />
-            <list items={[' a call ', ' a ring']} limit={1} id='verb' value='call' />
-          </sequence>
-        </choice>
-        <choice limit={1}>
-          <sequence>
-            <literal text='facetime ' id='verb' value='facetime' />
-            <literal text='audio ' id='verb' value='facetime-audio' optional />
-            <AllGroup max={1} id='to' />
-          </sequence>
-          <sequence>
-            <literal text='give ' id='verb' value='facetime' />
-            <AllGroup max={1} id='to' />
-            <choice id='verb'>
-              <list items={[' a facetime call']} value='facetime' />
-              <list items={[' a facetime audio call']} value='facetime-audio' />
-            </choice>
-          </sequence>
-        </choice>
-        <choice limit={1}>
-          <sequence>
-            <list items={['send ', 'shoot ']} limit={1} id='verb' value='text' />
-            <AllGroup id='to' />
-            <list items={[' a text', ' an iMessage']} limit={1} id='verb' value='text' />
-          </sequence>
-          <sequence>
-            <list items={['text ', 'iMessage ', 'send a text to ', 'shoot a text to ']} limit={1} id='verb' value='text' />
-            <AllGroup id='to' />
-          </sequence>
-        </choice>
+        {config.enableEmail ? (
+          <choice limit={1}>
+            <sequence>
+              <list items={['send ', 'shoot ']} limit={1} id='verb' value='email' />
+              <EmailGroup id='to' />
+              <literal text=' an email' ellipsis />
+              <literal text=' about ' />
+              <String label='subject' id='subject' limit={1} />
+            </sequence>
+            <sequence>
+              <list items={['email ', 'send an email to ', 'send email to ', 'shoot an email to ']} id='verb' value='email' limit={1} />
+              <EmailGroup id='to' ellipsis />
+              <list items={[' about ', ' ']} limit={1} />
+              <String label='subject' id='subject' limit={1} />
+            </sequence>
+            <sequence>
+              <literal text='email ' id='verb' value='email' />
+              <String label='subject' id='subject' limit={1} />
+              <literal text=' to ' />
+              <EmailGroup id='to' />
+            </sequence>
+          </choice>
+        ): null}
+        {config.enableCall ? (
+          <choice limit={1}>
+            <sequence>
+              <list items={['call ']} limit={1} id='verb' value='call' />
+              <NumberGroup id='to' max={1} />
+            </sequence>
+            <sequence>
+              <list items={['give ']} limit={1} id='verb' value='call' />
+              <NumberGroup id='to' max={1} />
+              <list items={[' a call ', ' a ring']} limit={1} id='verb' value='call' />
+            </sequence>
+          </choice>
+        ) : null}
+        {config.enableFacetime || config.enableFacetimeAudio ? (
+          <choice limit={1}>
+            <sequence>
+              <list id='verb' items={[
+                config.enableFacetime ? {text: 'facetime ', value: 'facetime'} : null,
+                config.enableFacetimeAudio ? {text: 'facetime audio ', value: 'facetime-audio'} : null
+              ]} />
+              <AllGroup max={1} id='to' />
+            </sequence>
+            <sequence>
+              <literal text='give ' />
+              <AllGroup max={1} id='to' />
+              <list id='verb' items={[
+                config.enableFacetime ? {text: ' a facetime call', value: 'facetime'} : null,
+                config.enableFacetimeAudio ? {text: ' a facetime audio call', value: 'facetime-audio'} : null
+              ]} />
+            </sequence>
+          </choice>
+        ) : null}
+        {config.enableText ? (
+          <choice limit={1}>
+            <sequence>
+              <list items={['send ', 'shoot ']} limit={1} id='verb' value='text' />
+              <AllGroup id='to' />
+              <list items={[' a text', ' an iMessage']} limit={1} id='verb' value='text' />
+            </sequence>
+            <sequence>
+              <list items={['text ', 'iMessage ', 'send a text to ', 'shoot a text to ']} limit={1} id='verb' value='text' />
+              <AllGroup id='to' />
+            </sequence>
+          </choice>
+        ) : null}
           {/* <sequence>
             <list items={['text ', 'iMessage ']} limit={1} />
             <String label='message' id='message' limit={1} />
